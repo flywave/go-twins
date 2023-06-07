@@ -1,4 +1,4 @@
-package twins
+package model
 
 import "encoding/json"
 
@@ -18,6 +18,14 @@ type Stream struct {
 	Videos      Metadata     `json:"videos"`
 	Audios      Metadata     `json:"audios"`
 	Subscribers Subscribers  `json:"subscribers"`
+}
+
+func UnmarshalStream(buf []byte, msg *Stream) error {
+	return json.Unmarshal(buf, msg)
+}
+
+func MarshalStream(msg *Stream) ([]byte, error) {
+	return json.Marshal(msg)
 }
 
 func (stream *Stream) WithName(name string) *Stream {

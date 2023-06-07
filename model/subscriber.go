@@ -1,4 +1,4 @@
-package twins
+package model
 
 import "encoding/json"
 
@@ -9,6 +9,14 @@ type Subscriber struct {
 	Status      StreamStatus `json:"status"`
 	SubscribeAt int64        `json:"subscribe_at"`
 	CloseAt     int64        `json:"close_at"`
+}
+
+func UnmarshalSubscriber(buf []byte, msg *Subscriber) error {
+	return json.Unmarshal(buf, msg)
+}
+
+func MarshalSubscriber(msg *Subscriber) ([]byte, error) {
+	return json.Marshal(msg)
 }
 
 func (sub *Subscriber) WithStatus(st StreamStatus) *Subscriber {

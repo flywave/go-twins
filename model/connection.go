@@ -1,4 +1,4 @@
-package twins
+package model
 
 import "encoding/json"
 
@@ -15,6 +15,14 @@ type Connection struct {
 	Name   string             `json:"name"`
 	Status ConnectivityStatus `json:"status"`
 	Tags   []string           `json:"tags"`
+}
+
+func UnmarshalConnection(buf []byte, msg *Connection) error {
+	return json.Unmarshal(buf, msg)
+}
+
+func MarshalConnection(msg *Connection) ([]byte, error) {
+	return json.Marshal(msg)
 }
 
 func (conn *Connection) WithName(name string) *Connection {

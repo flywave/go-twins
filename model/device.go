@@ -1,4 +1,4 @@
-package twins
+package model
 
 import "encoding/json"
 
@@ -18,6 +18,14 @@ type Device struct {
 	Strategys    StrategyList `json:"strategys,omitempty"`
 	Status       HealthStatus `json:"status"`
 	Attributes   Attributes   `json:"attributes,omitempty"`
+}
+
+func UnmarshalDevice(buf []byte, msg *Device) error {
+	return json.Unmarshal(buf, msg)
+}
+
+func MarshalDevice(msg *Device) ([]byte, error) {
+	return json.Marshal(msg)
 }
 
 func (dev *Device) WithName(name string) *Device {

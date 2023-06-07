@@ -1,3 +1,3 @@
-package twins
+package model
 
 type Indicators map[string]interface{}

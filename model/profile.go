@@ -1,4 +1,4 @@
-package twins
+package model
 
 import "encoding/json"
 
@@ -27,6 +27,14 @@ type Profile struct {
 	Protocol     string     `json:"protocol,omitempty"`
 	Transport    string     `json:"transport,omitempty"`
 	Tags         []string   `json:"tags"`
+}
+
+func UnmarshalProfile(buf []byte, msg *Profile) error {
+	return json.Unmarshal(buf, msg)
+}
+
+func MarshalProfile(msg *Profile) ([]byte, error) {
+	return json.Marshal(msg)
 }
 
 func (c *Profile) WithName(name string) *Profile {

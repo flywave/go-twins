@@ -1,4 +1,4 @@
-package twins
+package model
 
 import "encoding/json"
 
@@ -7,7 +7,14 @@ type Thing struct {
 	Attributes Attributes  `json:"attributes,omitempty"`
 	Features   FeatureList `json:"features,omitempty"`
 	Revision   int64       `json:"revision,omitempty"`
-	Time       string      `json:"time,omitempty"`
+}
+
+func UnmarshalThing(buf []byte, msg *Thing) error {
+	return json.Unmarshal(buf, msg)
+}
+
+func MarshalThing(msg *Thing) ([]byte, error) {
+	return json.Marshal(msg)
 }
 
 func (thing *Thing) WithName(name string) *Thing {
@@ -17,11 +24,6 @@ func (thing *Thing) WithName(name string) *Thing {
 
 func (thing *Thing) WithRevision(revision int64) *Thing {
 	thing.Revision = revision
-	return thing
-}
-
-func (thing *Thing) WithTime(time string) *Thing {
-	thing.Time = time
 	return thing
 }
 

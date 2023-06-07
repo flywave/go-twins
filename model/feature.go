@@ -1,4 +1,4 @@
-package twins
+package model
 
 import "encoding/json"
 
@@ -7,6 +7,14 @@ type Feature struct {
 	Properties        Properties `json:"properties,omitempty"`
 	DesiredProperties Properties `json:"desired,omitempty"`
 	Attributes        Attributes `json:"attributes,omitempty"`
+}
+
+func UnmarshalFeature(buf []byte, msg *Feature) error {
+	return json.Unmarshal(buf, msg)
+}
+
+func MarshalFeature(msg *Feature) ([]byte, error) {
+	return json.Marshal(msg)
 }
 
 func (feature *Feature) WithName(name string) *Feature {

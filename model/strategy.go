@@ -1,4 +1,4 @@
-package twins
+package model
 
 import "encoding/json"
 
@@ -8,6 +8,14 @@ type Strategy struct {
 	Name       string     `json:"name"`
 	Attributes Attributes `json:"attributes,omitempty"`
 	Indicators Indicators `json:"indicators,omitempty"`
+}
+
+func UnmarshalStrategy(buf []byte, msg *Strategy) error {
+	return json.Unmarshal(buf, msg)
+}
+
+func MarshalStrategy(msg *Strategy) ([]byte, error) {
+	return json.Marshal(msg)
 }
 
 func (st *Strategy) WithName(name string) *Strategy {
