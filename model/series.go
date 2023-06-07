@@ -3,15 +3,13 @@ package model
 import (
 	"encoding/json"
 	"time"
-)
 
-const (
-	DateTimeFormat = "2006-01-02 15:04:05.999999"
+	"github.com/flywave/go-twins"
 )
 
 type SeriesPoint struct {
 	Time       time.Time         `json:"time,omitempty"`
-	Path       string            `json:"path,omitempty"`
+	Name       string            `json:"name"`
 	Attributes map[string]string `json:"attributes,omitempty"`
 	Properties Properties        `json:"properties,omitempty"`
 }
@@ -19,7 +17,7 @@ type SeriesPoint struct {
 func (p *SeriesPoint) UnmarshalJSON(d []byte) error {
 	ps := &struct {
 		Time       string            `json:"time,omitempty"`
-		Path       string            `json:"path,omitempty"`
+		Name       string            `json:"name"`
 		Attributes map[string]string `json:"attributes,omitempty"`
 		Properties Properties        `json:"properties,omitempty"`
 	}{}
@@ -29,12 +27,12 @@ func (p *SeriesPoint) UnmarshalJSON(d []byte) error {
 		return err
 	}
 	if ps.Time != "" {
-		p.Time, err = time.Parse(DateTimeFormat, ps.Time)
+		p.Time, err = time.Parse(twins.DateTimeFormat, ps.Time)
 		if err != nil {
 			return err
 		}
 	}
-	p.Path = ps.Path
+	p.Name = ps.Name
 	p.Attributes = ps.Attributes
 	p.Properties = ps.Properties
 	return nil
@@ -43,12 +41,12 @@ func (p *SeriesPoint) UnmarshalJSON(d []byte) error {
 func (p *SeriesPoint) MarshalJSON() ([]byte, error) {
 	ps := struct {
 		Time       string            `json:"time,omitempty"`
-		Path       string            `json:"path,omitempty"`
+		Name       string            `json:"name"`
 		Attributes map[string]string `json:"attributes,omitempty"`
 		Properties Properties        `json:"properties,omitempty"`
 	}{
-		Time:       p.Time.Format(DateTimeFormat),
-		Path:       p.Path,
+		Time:       p.Time.Format(twins.DateTimeFormat),
+		Name:       p.Name,
 		Attributes: p.Attributes,
 		Properties: p.Properties,
 	}

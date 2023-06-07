@@ -5,10 +5,10 @@ import "encoding/json"
 type HealthStatus string
 
 const (
-	HEALTH_STATUS_UNACTIVATED HealthStatus = "unactivated"
-	HEALTH_STATUS_UNHEALTHY   HealthStatus = "unhealthy"
-	HEALTH_STATUS_HEALTHY     HealthStatus = "healthy"
-	HEALTH_STATUS_OFFLINE     HealthStatus = "offline"
+	HealthStatusUnactivated HealthStatus = "unactivated"
+	HealthStatusUnhealthy   HealthStatus = "unhealthy"
+	HealthStatusHealthy     HealthStatus = "healthy"
+	HealthStatusOffline     HealthStatus = "offline"
 )
 
 type Device struct {
