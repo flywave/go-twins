@@ -16,15 +16,15 @@ type Message struct {
 }
 
 func NewMessageWithEnvelope(en *protocol.Envelope) (*Message, error) {
-	if en.Topic.IsMessage() && (en.Path.Type() == protocol.PATH_TYPE_THING_FEATURE_MESSAGE || en.Path.Type() == protocol.PATH_TYPE_THING_MESSAGE) {
+	if en.Topic.IsMessage() && (en.Path.Type() == protocol.PathTypeThingFeatureMessages || en.Path.Type() == protocol.PathTypeThingMessages) {
 		var subject string
 		var direction protocol.DirectionType
 		switch en.Path.Type() {
-		case protocol.PATH_TYPE_THING_FEATURE_MESSAGE:
+		case protocol.PathTypeThingFeatureMessages:
 			ps := en.Path.GetThingFeatureMessages()
 			subject = ps.Subject
 			direction = ps.Direction
-		case protocol.PATH_TYPE_THING_MESSAGE:
+		case protocol.PathTypeThingMessages:
 			ps := en.Path.GetThingMessages()
 			subject = ps.Subject
 			direction = ps.Direction
@@ -68,14 +68,14 @@ func (c *Message) GetPayload() interface{} {
 func (msg *Message) Incoming(subject string) *Message {
 	msg.Topic.WithAction(protocol.TopicAction(subject))
 	msg.Subject = subject
-	msg.Direction = protocol.MESSAGE_DIRECTION_INCOMING
+	msg.Direction = protocol.DirectionIncoming
 	return msg
 }
 
 func (msg *Message) Outgoing(subject string) *Message {
 	msg.Topic.WithAction(protocol.TopicAction(subject))
 	msg.Subject = subject
-	msg.Direction = protocol.MESSAGE_DIRECTION_OUTGOING
+	msg.Direction = protocol.DirectionOutgoing
 	return msg
 }
 

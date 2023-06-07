@@ -95,45 +95,45 @@ var regexProfilesPath = regexp.MustCompile("^@(profiles)(/([^/]+)?)?$")
 type PathType string
 
 const (
-	PATH_TYPE_ROOT                        PathType = "root_path"
-	PATH_TYPE_THING                       PathType = "thing_path"
-	PATH_TYPE_THING_ATTRIBUTES            PathType = "thing_attributes_path"
-	PATH_TYPE_THING_MESSAGE               PathType = "thing_message_path"
-	PATH_TYPE_THING_FEATURES              PathType = "thing_features_path"
-	PATH_TYPE_THING_FEATURE_MESSAGE       PathType = "thing_feature_message_path"
-	PATH_TYPE_THING_FEATURE_PROPERTIES    PathType = "thing_feature_properties_path"
-	PATH_TYPE_THING_FEATURE_DESIRED       PathType = "thing_feature_desired_path"
-	PATH_TYPE_THING_FEATURE_ATTRIBUTES    PathType = "thing_feature_attributes_path"
-	PATH_TYPE_DEVICE                      PathType = "device_path"
-	PATH_TYPE_DEVICE_STATUS               PathType = "device_status_path"
-	PATH_TYPE_DEVICE_ATTRIBUTES           PathType = "device_attributes_path"
-	PATH_TYPE_DEVICE_STRATEGYS            PathType = "device_strategys_path"
-	PATH_TYPE_DEVICE_STRATEGYS_INDICATORS PathType = "device_strategys_indicators_path"
-	PATH_TYPE_DEVICE_STRATEGYS_ATTRIBUTES PathType = "device_strategys_attributes_path"
-	PATH_TYPE_DEVICE_PROFILES             PathType = "device_profiles_path"
-	PATH_TYPE_CONNECTION                  PathType = "connection_path"
-	PATH_TYPE_CONNECTION_STATUS           PathType = "connection_status_path"
-	PATH_TYPE_STREAM                      PathType = "stream_path"
-	PATH_TYPE_STREAM_STATUS               PathType = "stream_status_path"
-	PATH_TYPE_STREAM_VIDEOS               PathType = "stream_videos_path"
-	PATH_TYPE_STREAM_AUDIOS               PathType = "stream_audios_path"
-	PATH_TYPE_STREAM_SUBSCRIBERS          PathType = "stream_subscribers_path"
-	PATH_TYPE_FEATURES                    PathType = "feature_path"
-	PATH_TYPE_FEATURE_PROPERTIES          PathType = "feature_properties_path"
-	PATH_TYPE_FEATURE_DESIRED             PathType = "feature_desired_path"
-	PATH_TYPE_FEATURE_ATTRIBUTES          PathType = "feature_attributes_path"
-	PATH_TYPE_PROPERTIES                  PathType = "properties_path"
-	PATH_TYPE_DESIRED                     PathType = "desired_path"
-	PATH_TYPE_ATTRIBUTES                  PathType = "attributes_path"
-	PATH_TYPE_STRATEGYS                   PathType = "strategys_path"
-	PATH_TYPE_STRATEGYS_INDICATORS        PathType = "strategys_indicators_path"
-	PATH_TYPE_STRATEGYS_ATTRIBUTES        PathType = "strategys_attributes_path"
-	PATH_TYPE_INDICATORS                  PathType = "indicators_path"
-	PATH_TYPE_PROFILES                    PathType = "profiles_path"
-	PATH_TYPE_STATUS                      PathType = "status_path"
-	PATH_TYPE_VIDEOS                      PathType = "videos_path"
-	PATH_TYPE_AUDIOS                      PathType = "audios_path"
-	PATH_TYPE_SUBSCRIBERS                 PathType = "subscribers_path"
+	PathTypeRoot                          PathType = "root_path"
+	PathTypeThing                         PathType = "thing_path"
+	PathTypeThingAttributes               PathType = "thing_attributes_path"
+	PathTypeThingMessages                 PathType = "thing_message_path"
+	PathTypeThingFeatures                 PathType = "thing_features_path"
+	PathTypeThingFeatureMessages          PathType = "thing_feature_message_path"
+	PathTypeThingFeatureProperties        PathType = "thing_feature_properties_path"
+	PathTypeThingFeatureDesiredProperties PathType = "thing_feature_desired_path"
+	PathTypeThingFeatureAttributes        PathType = "thing_feature_attributes_path"
+	PathTypeDevice                        PathType = "device_path"
+	PathTypeDeviceStatus                  PathType = "device_status_path"
+	PathTypeDeviceAttributes              PathType = "device_attributes_path"
+	PathTypeDeviceStrategys               PathType = "device_strategys_path"
+	PathTypeDeviceStrategyIndicators      PathType = "device_strategys_indicators_path"
+	PathTypeDeviceStrategyAttributes      PathType = "device_strategys_attributes_path"
+	PathTypeDeviceProfiles                PathType = "device_profiles_path"
+	PathTypeConnection                    PathType = "connection_path"
+	PathTypeConnectionStatus              PathType = "connection_status_path"
+	PathTypeStream                        PathType = "stream_path"
+	PathTypeStreamStatus                  PathType = "stream_status_path"
+	PathTypeStreamVideos                  PathType = "stream_videos_path"
+	PathTypeStreamAudios                  PathType = "stream_audios_path"
+	PathTypeStream_SUBSCRIBERS            PathType = "stream_subscribers_path"
+	PathTypeFeatures                      PathType = "feature_path"
+	PathTypeFeaturesProperties            PathType = "feature_properties_path"
+	PathTypeFeaturesDesiredProperties     PathType = "feature_desired_path"
+	PathTypeFeaturesAttributes            PathType = "feature_attributes_path"
+	PathTypeProperties                    PathType = "properties_path"
+	PathTypeDesiredProperties             PathType = "desired_path"
+	PathTypeAttributes                    PathType = "attributes_path"
+	PathTypeStrategys                     PathType = "strategys_path"
+	PathTypeStrategyIndicators            PathType = "strategys_indicators_path"
+	PathTypeStrategyAttributes            PathType = "strategys_attributes_path"
+	PathTypeIndicators                    PathType = "indicators_path"
+	PathTypeProfiles                      PathType = "profiles_path"
+	PathTypeStatus                        PathType = "status_path"
+	PathTypeVideos                        PathType = "videos_path"
+	PathTypeAudios                        PathType = "audios_path"
+	PathTypeSubscribers                   PathType = "subscribers_path"
 )
 
 type Path struct {
@@ -251,7 +251,7 @@ func (p *Path) WithThing(thing string) *Path {
 }
 
 func (p *Path) GetThing() *ThingPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_THING {
+	if p.Entity != nil && p.Type() == PathTypeThing {
 		return p.Entity.(*ThingPath)
 	}
 	return nil
@@ -268,7 +268,7 @@ func (p *Path) WithThingAttribute(thing, attribute string) *Path {
 }
 
 func (p *Path) GetThingAttributes() *ThingAttributesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_THING_ATTRIBUTES {
+	if p.Entity != nil && p.Type() == PathTypeThingAttributes {
 		return p.Entity.(*ThingAttributesPath)
 	}
 	return nil
@@ -280,7 +280,7 @@ func (p *Path) WithThingMessages(thing string, direction DirectionType, subject 
 }
 
 func (p *Path) GetThingMessages() *ThingMessagesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_THING_MESSAGE {
+	if p.Entity != nil && p.Type() == PathTypeThingMessages {
 		return p.Entity.(*ThingMessagesPath)
 	}
 	return nil
@@ -297,7 +297,7 @@ func (p *Path) WithThingFeature(thing, feature string) *Path {
 }
 
 func (p *Path) GetThingFeatures() *ThingFeaturesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_THING_FEATURES {
+	if p.Entity != nil && p.Type() == PathTypeThingFeatures {
 		return p.Entity.(*ThingFeaturesPath)
 	}
 	return nil
@@ -309,7 +309,7 @@ func (p *Path) WithThingFeatureMessages(thing, feature string, direction Directi
 }
 
 func (p *Path) GetThingFeatureMessages() *ThingFeatureMessagesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_THING_FEATURE_MESSAGE {
+	if p.Entity != nil && p.Type() == PathTypeThingFeatureMessages {
 		return p.Entity.(*ThingFeatureMessagesPath)
 	}
 	return nil
@@ -331,7 +331,7 @@ func (p *Path) WithThingFeaturePropertiesTimeSeries(thing, feature, propertie st
 }
 
 func (p *Path) GetThingFeatureProperties() *ThingFeaturePropertiesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_THING_FEATURE_PROPERTIES {
+	if p.Entity != nil && p.Type() == PathTypeThingFeatureProperties {
 		return p.Entity.(*ThingFeaturePropertiesPath)
 	}
 	return nil
@@ -348,7 +348,7 @@ func (p *Path) WithThingFeatureDesired(thing, feature, propertie string) *Path {
 }
 
 func (p *Path) GetThingFeatureDesired() *ThingFeatureDesiredPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_THING_FEATURE_DESIRED {
+	if p.Entity != nil && p.Type() == PathTypeThingFeatureDesiredProperties {
 		return p.Entity.(*ThingFeatureDesiredPath)
 	}
 	return nil
@@ -365,7 +365,7 @@ func (p *Path) WithThingFeatureAttribute(thing, feature, attribute string) *Path
 }
 
 func (p *Path) GetThingFeatureAttributes() *ThingFeatureAttributesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_THING_FEATURE_ATTRIBUTES {
+	if p.Entity != nil && p.Type() == PathTypeThingFeatureAttributes {
 		return p.Entity.(*ThingFeatureAttributesPath)
 	}
 	return nil
@@ -382,7 +382,7 @@ func (p *Path) WithDevice(device string) *Path {
 }
 
 func (p *Path) GetDevice() *DevicePath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_DEVICE {
+	if p.Entity != nil && p.Type() == PathTypeDevice {
 		return p.Entity.(*DevicePath)
 	}
 	return nil
@@ -394,7 +394,7 @@ func (p *Path) WithDeviceStatus(device string) *Path {
 }
 
 func (p *Path) GetDeviceStatus() *DeviceStatusPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_DEVICE_STATUS {
+	if p.Entity != nil && p.Type() == PathTypeDeviceStatus {
 		return p.Entity.(*DeviceStatusPath)
 	}
 	return nil
@@ -411,7 +411,7 @@ func (p *Path) WithDeviceAttribute(device, attribute string) *Path {
 }
 
 func (p *Path) GetDeviceAttributes() *DeviceAttributesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_DEVICE_ATTRIBUTES {
+	if p.Entity != nil && p.Type() == PathTypeDeviceAttributes {
 		return p.Entity.(*DeviceAttributesPath)
 	}
 	return nil
@@ -428,7 +428,7 @@ func (p *Path) WithDeviceStrategy(device, strategy string) *Path {
 }
 
 func (p *Path) GetDeviceStrategys() *DeviceStrategysPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_DEVICE_STRATEGYS {
+	if p.Entity != nil && p.Type() == PathTypeDeviceStrategys {
 		return p.Entity.(*DeviceStrategysPath)
 	}
 	return nil
@@ -450,7 +450,7 @@ func (p *Path) WithDeviceStrategyIndicatorTimeSeries(device, strategy, indicator
 }
 
 func (p *Path) GetDeviceStrategyIndicators() *DeviceStrategyIndicatorsPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_DEVICE_STRATEGYS_INDICATORS {
+	if p.Entity != nil && p.Type() == PathTypeDeviceStrategyIndicators {
 		return p.Entity.(*DeviceStrategyIndicatorsPath)
 	}
 	return nil
@@ -467,7 +467,7 @@ func (p *Path) WithDeviceStrategyAttribute(device, strategy, attribute string) *
 }
 
 func (p *Path) GetDeviceStrategyAttributes() *DeviceStrategyAttributesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_DEVICE_STRATEGYS_ATTRIBUTES {
+	if p.Entity != nil && p.Type() == PathTypeDeviceStrategyAttributes {
 		return p.Entity.(*DeviceStrategyAttributesPath)
 	}
 	return nil
@@ -484,7 +484,7 @@ func (p *Path) WithDeviceProfile(device, profile string) *Path {
 }
 
 func (p *Path) GetDeviceProfiles() *DeviceProfilesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_DEVICE_PROFILES {
+	if p.Entity != nil && p.Type() == PathTypeDeviceProfiles {
 		return p.Entity.(*DeviceProfilesPath)
 	}
 	return nil
@@ -501,7 +501,7 @@ func (p *Path) WithConnection(connection string) *Path {
 }
 
 func (p *Path) GetConnection() *ConnectionPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_CONNECTION {
+	if p.Entity != nil && p.Type() == PathTypeConnection {
 		return p.Entity.(*ConnectionPath)
 	}
 	return nil
@@ -513,7 +513,7 @@ func (p *Path) WithConnectionStatus(connection string) *Path {
 }
 
 func (p *Path) GetConnectionStatus() *ConnectionStatusPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_CONNECTION_STATUS {
+	if p.Entity != nil && p.Type() == PathTypeConnectionStatus {
 		return p.Entity.(*ConnectionStatusPath)
 	}
 	return nil
@@ -530,7 +530,7 @@ func (p *Path) WithStream(stream string) *Path {
 }
 
 func (p *Path) GetStream() *StreamPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_STREAM {
+	if p.Entity != nil && p.Type() == PathTypeStream {
 		return p.Entity.(*StreamPath)
 	}
 	return nil
@@ -542,7 +542,7 @@ func (p *Path) WithStreamStatus(stream string) *Path {
 }
 
 func (p *Path) GetStreamStatus() *StreamStatusPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_STREAM_STATUS {
+	if p.Entity != nil && p.Type() == PathTypeStreamStatus {
 		return p.Entity.(*StreamStatusPath)
 	}
 	return nil
@@ -554,7 +554,7 @@ func (p *Path) WithStreamVideos(stream string) *Path {
 }
 
 func (p *Path) GetStreamVideos() *StreamVideosPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_STREAM_VIDEOS {
+	if p.Entity != nil && p.Type() == PathTypeStreamVideos {
 		return p.Entity.(*StreamVideosPath)
 	}
 	return nil
@@ -566,7 +566,7 @@ func (p *Path) WithStreamAudios(stream string) *Path {
 }
 
 func (p *Path) GetStreamAudios() *StreamAudiosPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_STREAM_AUDIOS {
+	if p.Entity != nil && p.Type() == PathTypeStreamAudios {
 		return p.Entity.(*StreamAudiosPath)
 	}
 	return nil
@@ -578,7 +578,7 @@ func (p *Path) WithStreamSubscribers(stream string) *Path {
 }
 
 func (p *Path) GetStreamSubscribers() *StreamSubscribersPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_STREAM_SUBSCRIBERS {
+	if p.Entity != nil && p.Type() == PathTypeStream_SUBSCRIBERS {
 		return p.Entity.(*StreamSubscribersPath)
 	}
 	return nil
@@ -595,7 +595,7 @@ func (p *Path) WithFeature(feature string) *Path {
 }
 
 func (p *Path) GetFeatures() *FeaturesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_FEATURES {
+	if p.Entity != nil && p.Type() == PathTypeFeatures {
 		return p.Entity.(*FeaturesPath)
 	}
 	return nil
@@ -612,7 +612,7 @@ func (p *Path) WithFeaturePropertie(feature, propertie string) *Path {
 }
 
 func (p *Path) GetFeatureProperties() *FeaturePropertiesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_FEATURE_PROPERTIES {
+	if p.Entity != nil && p.Type() == PathTypeFeaturesProperties {
 		return p.Entity.(*FeaturePropertiesPath)
 	}
 	return nil
@@ -629,7 +629,7 @@ func (p *Path) WithFeatureDesired(feature, propertie string) *Path {
 }
 
 func (p *Path) GetFeatureDesired() *FeatureDesiredPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_THING_FEATURE_DESIRED {
+	if p.Entity != nil && p.Type() == PathTypeThingFeatureDesiredProperties {
 		return p.Entity.(*FeatureDesiredPath)
 	}
 	return nil
@@ -646,7 +646,7 @@ func (p *Path) WithFeatureAttribute(feature, attribute string) *Path {
 }
 
 func (p *Path) GetFeatureAttributes() *FeatureAttributesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_THING_FEATURE_ATTRIBUTES {
+	if p.Entity != nil && p.Type() == PathTypeThingFeatureAttributes {
 		return p.Entity.(*FeatureAttributesPath)
 	}
 	return nil
@@ -663,7 +663,7 @@ func (p *Path) WithPropertie(propertie string) *Path {
 }
 
 func (p *Path) GetProperties() *PropertiesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_PROPERTIES {
+	if p.Entity != nil && p.Type() == PathTypeProperties {
 		return p.Entity.(*PropertiesPath)
 	}
 	return nil
@@ -680,7 +680,7 @@ func (p *Path) WithDesired(propertie string) *Path {
 }
 
 func (p *Path) GetDesired() *DesiredPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_DESIRED {
+	if p.Entity != nil && p.Type() == PathTypeDesiredProperties {
 		return p.Entity.(*DesiredPath)
 	}
 	return nil
@@ -697,7 +697,7 @@ func (p *Path) WithAttribute(attribute string) *Path {
 }
 
 func (p *Path) GetAttribute() *AttributesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_ATTRIBUTES {
+	if p.Entity != nil && p.Type() == PathTypeAttributes {
 		return p.Entity.(*AttributesPath)
 	}
 	return nil
@@ -714,7 +714,7 @@ func (p *Path) WithStrategy(strategy string) *Path {
 }
 
 func (p *Path) GetStrategys() *StrategysPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_STRATEGYS {
+	if p.Entity != nil && p.Type() == PathTypeStrategys {
 		return p.Entity.(*StrategysPath)
 	}
 	return nil
@@ -731,7 +731,7 @@ func (p *Path) WithStrategyIndicator(strategy, indicator string) *Path {
 }
 
 func (p *Path) GetStrategyIndicators() *StrategyIndicatorsPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_STRATEGYS_INDICATORS {
+	if p.Entity != nil && p.Type() == PathTypeStrategyIndicators {
 		return p.Entity.(*StrategyIndicatorsPath)
 	}
 	return nil
@@ -748,7 +748,7 @@ func (p *Path) WithStrategyAttribute(strategy, attribute string) *Path {
 }
 
 func (p *Path) GetStrategyAttributes() *StrategyAttributesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_STRATEGYS_ATTRIBUTES {
+	if p.Entity != nil && p.Type() == PathTypeStrategyAttributes {
 		return p.Entity.(*StrategyAttributesPath)
 	}
 	return nil
@@ -760,7 +760,7 @@ func (p *Path) WithIndicators(strategy, indicator string) *Path {
 }
 
 func (p *Path) GetIndicators() *IndicatorsPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_INDICATORS {
+	if p.Entity != nil && p.Type() == PathTypeIndicators {
 		return p.Entity.(*IndicatorsPath)
 	}
 	return nil
@@ -777,7 +777,7 @@ func (p *Path) WithProfile(profile string) *Path {
 }
 
 func (p *Path) GetProfile() *ProfilesPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_INDICATORS {
+	if p.Entity != nil && p.Type() == PathTypeIndicators {
 		return p.Entity.(*ProfilesPath)
 	}
 	return nil
@@ -789,7 +789,7 @@ func (p *Path) WithStatus(profile string) *Path {
 }
 
 func (p *Path) GetStatus() *StatusPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_STATUS {
+	if p.Entity != nil && p.Type() == PathTypeStatus {
 		return p.Entity.(*StatusPath)
 	}
 	return nil
@@ -801,7 +801,7 @@ func (p *Path) WithVideos() *Path {
 }
 
 func (p *Path) GetVideos() *VideosPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_VIDEOS {
+	if p.Entity != nil && p.Type() == PathTypeVideos {
 		return p.Entity.(*VideosPath)
 	}
 	return nil
@@ -813,7 +813,7 @@ func (p *Path) WithAudios() *Path {
 }
 
 func (p *Path) GetAudios() *AudiosPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_AUDIOS {
+	if p.Entity != nil && p.Type() == PathTypeAudios {
 		return p.Entity.(*AudiosPath)
 	}
 	return nil
@@ -825,7 +825,7 @@ func (p *Path) WithSubscribers() *Path {
 }
 
 func (p *Path) GetSubscribers() *SubscribersPath {
-	if p.Entity != nil && p.Type() == PATH_TYPE_SUBSCRIBERS {
+	if p.Entity != nil && p.Type() == PathTypeSubscribers {
 		return p.Entity.(*SubscribersPath)
 	}
 	return nil
@@ -1093,7 +1093,7 @@ type RootPath struct {
 }
 
 func (t *RootPath) Type() PathType {
-	return PATH_TYPE_ROOT
+	return PathTypeRoot
 }
 
 func (t *RootPath) EntityType() EntityType {
@@ -1117,7 +1117,7 @@ type ThingPath struct {
 }
 
 func (t *ThingPath) Type() PathType {
-	return PATH_TYPE_THING
+	return PathTypeThing
 }
 
 func (t *ThingPath) EntityType() EntityType {
@@ -1155,7 +1155,7 @@ type ThingAttributesPath struct {
 }
 
 func (t *ThingAttributesPath) Type() PathType {
-	return PATH_TYPE_THING_ATTRIBUTES
+	return PathTypeThingAttributes
 }
 
 func (t *ThingAttributesPath) String() string {
@@ -1190,7 +1190,7 @@ type ThingMessagesPath struct {
 }
 
 func (t *ThingMessagesPath) Type() PathType {
-	return PATH_TYPE_THING_MESSAGE
+	return PathTypeThingMessages
 }
 
 func (t *ThingMessagesPath) String() string {
@@ -1216,7 +1216,7 @@ type ThingFeaturesPath struct {
 }
 
 func (t *ThingFeaturesPath) Type() PathType {
-	return PATH_TYPE_THING_FEATURES
+	return PathTypeThingFeatures
 }
 
 func (t *ThingFeaturesPath) String() string {
@@ -1251,7 +1251,7 @@ type ThingFeatureMessagesPath struct {
 }
 
 func (t *ThingFeatureMessagesPath) Type() PathType {
-	return PATH_TYPE_THING_FEATURE_MESSAGE
+	return PathTypeThingFeatureMessages
 }
 
 func (t *ThingFeatureMessagesPath) String() string {
@@ -1276,7 +1276,7 @@ type ThingFeaturePropertiesPath struct {
 }
 
 func (t *ThingFeaturePropertiesPath) Type() PathType {
-	return PATH_TYPE_THING_FEATURE_PROPERTIES
+	return PathTypeThingFeatureProperties
 }
 
 func (t *ThingFeaturePropertiesPath) String() string {
@@ -1320,7 +1320,7 @@ type ThingFeatureDesiredPath struct {
 }
 
 func (t *ThingFeatureDesiredPath) Type() PathType {
-	return PATH_TYPE_THING_FEATURE_DESIRED
+	return PathTypeThingFeatureDesiredProperties
 }
 
 func (t *ThingFeatureDesiredPath) String() string {
@@ -1361,7 +1361,7 @@ type ThingFeatureAttributesPath struct {
 }
 
 func (t *ThingFeatureAttributesPath) Type() PathType {
-	return PATH_TYPE_THING_FEATURE_ATTRIBUTES
+	return PathTypeThingFeatureAttributes
 }
 
 func (t *ThingFeatureAttributesPath) String() string {
@@ -1401,7 +1401,7 @@ type DevicePath struct {
 }
 
 func (t *DevicePath) Type() PathType {
-	return PATH_TYPE_DEVICE
+	return PathTypeDevice
 }
 
 func (t *DevicePath) EntityType() EntityType {
@@ -1431,7 +1431,7 @@ type DeviceStatusPath struct {
 }
 
 func (t *DeviceStatusPath) Type() PathType {
-	return PATH_TYPE_DEVICE_STATUS
+	return PathTypeDeviceStatus
 }
 
 func (t *DeviceStatusPath) String() string {
@@ -1459,7 +1459,7 @@ type DeviceAttributesPath struct {
 }
 
 func (t *DeviceAttributesPath) Type() PathType {
-	return PATH_TYPE_DEVICE_ATTRIBUTES
+	return PathTypeDeviceAttributes
 }
 
 func (t *DeviceAttributesPath) String() string {
@@ -1493,7 +1493,7 @@ type DeviceStrategysPath struct {
 }
 
 func (t *DeviceStrategysPath) Type() PathType {
-	return PATH_TYPE_DEVICE_STRATEGYS
+	return PathTypeDeviceStrategys
 }
 
 func (t *DeviceStrategysPath) String() string {
@@ -1528,7 +1528,7 @@ type DeviceStrategyIndicatorsPath struct {
 }
 
 func (t *DeviceStrategyIndicatorsPath) Type() PathType {
-	return PATH_TYPE_DEVICE_STRATEGYS_INDICATORS
+	return PathTypeDeviceStrategyIndicators
 }
 
 func (t *DeviceStrategyIndicatorsPath) String() string {
@@ -1572,7 +1572,7 @@ type DeviceStrategyAttributesPath struct {
 }
 
 func (t *DeviceStrategyAttributesPath) Type() PathType {
-	return PATH_TYPE_DEVICE_STRATEGYS_ATTRIBUTES
+	return PathTypeDeviceStrategyAttributes
 }
 
 func (t *DeviceStrategyAttributesPath) String() string {
@@ -1609,7 +1609,7 @@ type DeviceProfilesPath struct {
 }
 
 func (t *DeviceProfilesPath) Type() PathType {
-	return PATH_TYPE_DEVICE_PROFILES
+	return PathTypeDeviceProfiles
 }
 
 func (t *DeviceProfilesPath) String() string {
@@ -1642,7 +1642,7 @@ type ConnectionPath struct {
 }
 
 func (t *ConnectionPath) Type() PathType {
-	return PATH_TYPE_CONNECTION
+	return PathTypeConnection
 }
 
 func (t *ConnectionPath) EntityType() EntityType {
@@ -1672,7 +1672,7 @@ type ConnectionStatusPath struct {
 }
 
 func (t *ConnectionStatusPath) Type() PathType {
-	return PATH_TYPE_CONNECTION_STATUS
+	return PathTypeConnectionStatus
 }
 
 func (t *ConnectionStatusPath) String() string {
@@ -1695,7 +1695,7 @@ type StreamPath struct {
 }
 
 func (t *StreamPath) Type() PathType {
-	return PATH_TYPE_STREAM
+	return PathTypeStream
 }
 
 func (t *StreamPath) EntityType() EntityType {
@@ -1725,7 +1725,7 @@ type StreamStatusPath struct {
 }
 
 func (t *StreamStatusPath) Type() PathType {
-	return PATH_TYPE_STREAM_STATUS
+	return PathTypeStreamStatus
 }
 
 func (t *StreamStatusPath) String() string {
@@ -1748,7 +1748,7 @@ type StreamVideosPath struct {
 }
 
 func (t *StreamVideosPath) Type() PathType {
-	return PATH_TYPE_STREAM_VIDEOS
+	return PathTypeStreamVideos
 }
 
 func (t *StreamVideosPath) String() string {
@@ -1771,7 +1771,7 @@ type StreamAudiosPath struct {
 }
 
 func (t *StreamAudiosPath) Type() PathType {
-	return PATH_TYPE_STREAM_AUDIOS
+	return PathTypeStreamAudios
 }
 
 func (t *StreamAudiosPath) String() string {
@@ -1794,7 +1794,7 @@ type StreamSubscribersPath struct {
 }
 
 func (t *StreamSubscribersPath) Type() PathType {
-	return PATH_TYPE_STREAM_SUBSCRIBERS
+	return PathTypeStream_SUBSCRIBERS
 }
 
 func (t *StreamSubscribersPath) String() string {
@@ -1821,7 +1821,7 @@ func (t *FeaturesPath) EntityType() EntityType {
 }
 
 func (t *FeaturesPath) Type() PathType {
-	return PATH_TYPE_FEATURES
+	return PathTypeFeatures
 }
 
 func (t *FeaturesPath) String() string {
@@ -1852,7 +1852,7 @@ func (t *FeaturePropertiesPath) EntityType() EntityType {
 }
 
 func (t *FeaturePropertiesPath) Type() PathType {
-	return PATH_TYPE_FEATURE_PROPERTIES
+	return PathTypeFeaturesProperties
 }
 
 func (t *FeaturePropertiesPath) String() string {
@@ -1890,7 +1890,7 @@ func (t *FeatureDesiredPath) EntityType() EntityType {
 }
 
 func (t *FeatureDesiredPath) Type() PathType {
-	return PATH_TYPE_FEATURE_DESIRED
+	return PathTypeFeaturesDesiredProperties
 }
 
 func (t *FeatureDesiredPath) String() string {
@@ -1928,7 +1928,7 @@ func (t *FeatureAttributesPath) EntityType() EntityType {
 }
 
 func (t *FeatureAttributesPath) Type() PathType {
-	return PATH_TYPE_FEATURE_ATTRIBUTES
+	return PathTypeFeaturesAttributes
 }
 
 func (t *FeatureAttributesPath) String() string {
@@ -1965,7 +1965,7 @@ func (t *PropertiesPath) EntityType() EntityType {
 }
 
 func (t *PropertiesPath) Type() PathType {
-	return PATH_TYPE_PROPERTIES
+	return PathTypeProperties
 }
 
 func (t *PropertiesPath) String() string {
@@ -1995,7 +1995,7 @@ func (t *DesiredPath) EntityType() EntityType {
 }
 
 func (t *DesiredPath) Type() PathType {
-	return PATH_TYPE_DESIRED
+	return PathTypeDesiredProperties
 }
 
 func (t *DesiredPath) String() string {
@@ -2025,7 +2025,7 @@ func (t *AttributesPath) EntityType() EntityType {
 }
 
 func (t *AttributesPath) Type() PathType {
-	return PATH_TYPE_ATTRIBUTES
+	return PathTypeAttributes
 }
 
 func (t *AttributesPath) String() string {
@@ -2055,7 +2055,7 @@ func (t *StrategysPath) EntityType() EntityType {
 }
 
 func (t *StrategysPath) Type() PathType {
-	return PATH_TYPE_STRATEGYS
+	return PathTypeStrategys
 }
 
 func (t *StrategysPath) String() string {
@@ -2086,7 +2086,7 @@ func (t *StrategyIndicatorsPath) EntityType() EntityType {
 }
 
 func (t *StrategyIndicatorsPath) Type() PathType {
-	return PATH_TYPE_STRATEGYS_INDICATORS
+	return PathTypeStrategyIndicators
 }
 
 func (t *StrategyIndicatorsPath) String() string {
@@ -2124,7 +2124,7 @@ func (t *StrategyAttributesPath) EntityType() EntityType {
 }
 
 func (t *StrategyAttributesPath) Type() PathType {
-	return PATH_TYPE_STRATEGYS_ATTRIBUTES
+	return PathTypeStrategyAttributes
 }
 
 func (t *StrategyAttributesPath) String() string {
@@ -2161,7 +2161,7 @@ func (t *IndicatorsPath) EntityType() EntityType {
 }
 
 func (t *IndicatorsPath) Type() PathType {
-	return PATH_TYPE_INDICATORS
+	return PathTypeIndicators
 }
 
 func (t *IndicatorsPath) String() string {
@@ -2191,7 +2191,7 @@ func (t *ProfilesPath) EntityType() EntityType {
 }
 
 func (t *ProfilesPath) Type() PathType {
-	return PATH_TYPE_PROFILES
+	return PathTypeProfiles
 }
 
 func (t *ProfilesPath) String() string {
@@ -2220,7 +2220,7 @@ func (t *StatusPath) EntityType() EntityType {
 }
 
 func (t *StatusPath) Type() PathType {
-	return PATH_TYPE_STATUS
+	return PathTypeStatus
 }
 
 func (t *StatusPath) String() string {
@@ -2243,7 +2243,7 @@ func (t *VideosPath) EntityType() EntityType {
 }
 
 func (t *VideosPath) Type() PathType {
-	return PATH_TYPE_VIDEOS
+	return PathTypeVideos
 }
 
 func (t *VideosPath) String() string {
@@ -2266,7 +2266,7 @@ func (t *AudiosPath) EntityType() EntityType {
 }
 
 func (t *AudiosPath) Type() PathType {
-	return PATH_TYPE_AUDIOS
+	return PathTypeAudios
 }
 
 func (t *AudiosPath) String() string {
@@ -2289,7 +2289,7 @@ func (t *SubscribersPath) EntityType() EntityType {
 }
 
 func (t *SubscribersPath) Type() PathType {
-	return PATH_TYPE_SUBSCRIBERS
+	return PathTypeSubscribers
 }
 
 func (t *SubscribersPath) String() string {
@@ -2334,49 +2334,49 @@ func (e *PathList) Scan(value interface{}) error {
 
 func isJoinOf(p, s PathType) bool {
 	switch p {
-	case PATH_TYPE_ROOT:
+	case PathTypeRoot:
 		switch s {
-		case PATH_TYPE_THING, PATH_TYPE_DEVICE, PATH_TYPE_STREAM, PATH_TYPE_CONNECTION:
+		case PathTypeThing, PathTypeDevice, PathTypeStream, PathTypeConnection:
 			return true
 		}
-	case PATH_TYPE_THING:
+	case PathTypeThing:
 		switch s {
-		case PATH_TYPE_FEATURES, PATH_TYPE_FEATURE_PROPERTIES, PATH_TYPE_FEATURE_DESIRED, PATH_TYPE_FEATURE_ATTRIBUTES, PATH_TYPE_ATTRIBUTES:
+		case PathTypeFeatures, PathTypeFeaturesProperties, PathTypeFeaturesDesiredProperties, PathTypeFeaturesAttributes, PathTypeAttributes:
 			return true
 		}
-	case PATH_TYPE_THING_FEATURES:
+	case PathTypeThingFeatures:
 		switch s {
-		case PATH_TYPE_PROPERTIES, PATH_TYPE_DESIRED, PATH_TYPE_ATTRIBUTES:
+		case PathTypeProperties, PathTypeDesiredProperties, PathTypeAttributes:
 			return true
 		}
-	case PATH_TYPE_DEVICE:
+	case PathTypeDevice:
 		switch s {
-		case PATH_TYPE_STRATEGYS, PATH_TYPE_STRATEGYS_INDICATORS, PATH_TYPE_STRATEGYS_ATTRIBUTES, PATH_TYPE_ATTRIBUTES, PATH_TYPE_PROFILES, PATH_TYPE_STATUS:
+		case PathTypeStrategys, PathTypeStrategyIndicators, PathTypeStrategyAttributes, PathTypeAttributes, PathTypeProfiles, PathTypeStatus:
 			return true
 		}
-	case PATH_TYPE_DEVICE_STRATEGYS:
+	case PathTypeDeviceStrategys:
 		switch s {
-		case PATH_TYPE_INDICATORS, PATH_TYPE_ATTRIBUTES:
+		case PathTypeIndicators, PathTypeAttributes:
 			return true
 		}
-	case PATH_TYPE_CONNECTION:
+	case PathTypeConnection:
 		switch s {
-		case PATH_TYPE_STATUS:
+		case PathTypeStatus:
 			return true
 		}
-	case PATH_TYPE_STREAM:
+	case PathTypeStream:
 		switch s {
-		case PATH_TYPE_STATUS, PATH_TYPE_VIDEOS, PATH_TYPE_AUDIOS, PATH_TYPE_SUBSCRIBERS:
+		case PathTypeStatus, PathTypeVideos, PathTypeAudios, PathTypeSubscribers:
 			return true
 		}
-	case PATH_TYPE_FEATURES:
+	case PathTypeFeatures:
 		switch s {
-		case PATH_TYPE_ATTRIBUTES, PATH_TYPE_PROPERTIES, PATH_TYPE_DESIRED:
+		case PathTypeAttributes, PathTypeProperties, PathTypeDesiredProperties:
 			return true
 		}
-	case PATH_TYPE_STRATEGYS:
+	case PathTypeStrategys:
 		switch s {
-		case PATH_TYPE_INDICATORS, PATH_TYPE_ATTRIBUTES:
+		case PathTypeIndicators, PathTypeAttributes:
 			return true
 		}
 	}

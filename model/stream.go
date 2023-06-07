@@ -5,11 +5,11 @@ import "encoding/json"
 type StreamStatus string
 
 const (
-	STREAM_STATUS_OPEN    StreamStatus = "open"
-	STREAM_STATUS_CLOSED  StreamStatus = "closed"
-	STREAM_STATUS_IDLE    StreamStatus = "idle"
-	STREAM_STATUS_FAILED  StreamStatus = "failed"
-	STREAM_STATUS_UNKNOWN StreamStatus = "unknown"
+	StreamStatusOpen    StreamStatus = "open"
+	StreamStatusClosed  StreamStatus = "closed"
+	StreamStatusIdle    StreamStatus = "idle"
+	StreamStatusFailed  StreamStatus = "failed"
+	StreamStatusUnknown StreamStatus = "unknown"
 )
 
 type Stream struct {
