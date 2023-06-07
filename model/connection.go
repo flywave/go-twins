@@ -5,10 +5,10 @@ import "encoding/json"
 type ConnectivityStatus string
 
 const (
-	ConnectivityStatusOpen    ConnectivityStatus = "open"
-	ConnectivityStatusClosed  ConnectivityStatus = "closed"
-	ConnectivityStatusFailed  ConnectivityStatus = "failed"
-	ConnectivityStatusUnknown ConnectivityStatus = "unknown"
+	CONNECTION_STATUS_OPEN    ConnectivityStatus = "open"
+	CONNECTION_STATUS_CLOSED  ConnectivityStatus = "closed"
+	CONNECTION_STATUS_FAILED  ConnectivityStatus = "failed"
+	CONNECTION_STATUS_UNKNOWN ConnectivityStatus = "unknown"
 )
 
 type Connection struct {

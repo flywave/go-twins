@@ -5,17 +5,17 @@ import "encoding/json"
 type DeviceType string
 
 const (
-	DeviceTypeGateway DeviceType = "gateway"
-	DeviceTypeSensor  DeviceType = "sensor"
-	DeviceTypePLC     DeviceType = "plc"
-	DeviceTypeDCS     DeviceType = "dcs"
-	DeviceTypeDCM     DeviceType = "dcm"
-	DeviceTypeDTU     DeviceType = "dtu"
-	DeviceTypeRTU     DeviceType = "rtu"
-	DeviceTypeCamera  DeviceType = "camera"
-	DeviceTypeMachine DeviceType = "machine"
-	DeviceTypeEdge    DeviceType = "edge"
-	DeviceTypeUnkown  DeviceType = "unkown"
+	DEVICE_TYPE_GATEWAY DeviceType = "gateway"
+	DEVICE_TYPE_SENSOR  DeviceType = "sensor"
+	DEVICE_TYPE_PLC     DeviceType = "plc"
+	DEVICE_TYPE_DCS     DeviceType = "dcs"
+	DEVICE_TYPE_DCM     DeviceType = "dcm"
+	DEVICE_TYPE_DTU     DeviceType = "dtu"
+	DEVICE_TYPE_RTU     DeviceType = "rtu"
+	DEVICE_TYPE_CAMERA  DeviceType = "camera"
+	DEVICE_TYPE_MACHINE DeviceType = "machine"
+	DEVICE_TYPE_EDGE    DeviceType = "edge"
+	DEVICE_TYPE_UNKOWN  DeviceType = "unkown"
 )
 
 type Profile struct {
