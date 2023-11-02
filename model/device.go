@@ -5,17 +5,17 @@ import "encoding/json"
 type HealthStatus string
 
 const (
-	HealthStatusUnactivated HealthStatus = "unactivated"
-	HealthStatusUnhealthy   HealthStatus = "unhealthy"
-	HealthStatusHealthy     HealthStatus = "healthy"
-	HealthStatusOffline     HealthStatus = "offline"
+	HEALTH_STATUS_UNACTIVATED HealthStatus = "unactivated"
+	HEALTH_STATUS_UNHEALTHY   HealthStatus = "unhealthy"
+	HEALTH_STATUS_HEALTHY     HealthStatus = "healthy"
+	HEALTH_STATUS_OFFLINE     HealthStatus = "offline"
 )
 
 type Device struct {
 	Name         string       `json:"name"`
 	SerialNumber string       `json:"serial_number"`
 	Profile      *Profile     `json:"profile,omitempty"`
-	Strategys    StrategyList `json:"strategys,omitempty"`
+	Strategies   StrategyList `json:"strategys,omitempty"`
 	Status       HealthStatus `json:"status"`
 	Attributes   Attributes   `json:"attributes,omitempty"`
 }
@@ -61,16 +61,16 @@ func (dev *Device) WithAttribute(id string, value string) *Device {
 	return dev
 }
 
-func (dev *Device) WithStrategys(strategyes StrategyList) *Device {
-	dev.Strategys = strategyes
+func (dev *Device) WithStrategies(strategyes StrategyList) *Device {
+	dev.Strategies = strategyes
 	return dev
 }
 
 func (dev *Device) WithStrategy(id string, value *Strategy) *Device {
-	if dev.Strategys == nil {
-		dev.Strategys = make(StrategyList)
+	if dev.Strategies == nil {
+		dev.Strategies = make(StrategyList)
 	}
-	dev.Strategys[id] = value
+	dev.Strategies[id] = value
 	return dev
 }
 
