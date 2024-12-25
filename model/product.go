@@ -18,7 +18,7 @@ const (
 	DeviceTypeUnkown  DeviceType = "unkown"
 )
 
-type Profile struct {
+type Product struct {
 	Name         string     `json:"name"`
 	Product      string     `json:"product"`
 	Manufacturer string     `json:"manufacturer"`
@@ -30,65 +30,65 @@ type Profile struct {
 	Tags         []string   `json:"tags"`
 }
 
-func UnmarshalProfile(buf []byte, msg *Profile) error {
+func UnmarshalProduct(buf []byte, msg *Product) error {
 	return json.Unmarshal(buf, msg)
 }
 
-func MarshalProfile(msg *Profile) ([]byte, error) {
+func MarshalProduct(msg *Product) ([]byte, error) {
 	return json.Marshal(msg)
 }
 
-func (c *Profile) WithName(name string) *Profile {
+func (c *Product) WithName(name string) *Product {
 	c.Name = name
 	return c
 }
 
-func (c *Profile) WithProduct(pd string) *Profile {
+func (c *Product) WithProduct(pd string) *Product {
 	c.Product = pd
 	return c
 }
 
-func (c *Profile) WithManufacturer(man string) *Profile {
+func (c *Product) WithManufacturer(man string) *Product {
 	c.Manufacturer = man
 	return c
 }
 
-func (c *Profile) WithType(tp DeviceType) *Profile {
+func (c *Product) WithType(tp DeviceType) *Product {
 	c.Type = tp
 	return c
 }
 
-func (c *Profile) WithVersion(vs string) *Profile {
+func (c *Product) WithVersion(vs string) *Product {
 	c.Version = vs
 	return c
 }
 
-func (c *Profile) WithFirmware(fm string) *Profile {
+func (c *Product) WithFirmware(fm string) *Product {
 	c.Firmware = fm
 	return c
 }
 
-func (c *Profile) WithProtocol(proto string) *Profile {
+func (c *Product) WithProtocol(proto string) *Product {
 	c.Protocol = proto
 	return c
 }
 
-func (c *Profile) WithTransport(tran string) *Profile {
+func (c *Product) WithTransport(tran string) *Product {
 	c.Transport = tran
 	return c
 }
 
-func (c *Profile) WithTags(tags []string) *Profile {
+func (c *Product) WithTags(tags []string) *Product {
 	c.Tags = append(c.Tags, tags...)
 	return c
 }
 
-func (c *Profile) WithTag(tag string) *Profile {
+func (c *Product) WithTag(tag string) *Product {
 	c.Tags = append(c.Tags, tag)
 	return c
 }
 
-func (c *Profile) ToJson() string {
+func (c *Product) ToJson() string {
 	b, _ := json.Marshal(c)
 	return string(b)
 }

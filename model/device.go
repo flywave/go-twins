@@ -14,7 +14,7 @@ const (
 type Device struct {
 	Name         string       `json:"name"`
 	SerialNumber string       `json:"serial_number"`
-	Profile      *Profile     `json:"profile,omitempty"`
+	Product      *Product     `json:"Product,omitempty"`
 	Strategies   StrategyList `json:"strategys,omitempty"`
 	Status       HealthStatus `json:"status"`
 	Attributes   Attributes   `json:"attributes,omitempty"`
@@ -43,8 +43,8 @@ func (dev *Device) WithSerialNumber(sn string) *Device {
 	return dev
 }
 
-func (dev *Device) WithProfile(pf *Profile) *Device {
-	dev.Profile = pf
+func (dev *Device) WithProduct(pf *Product) *Device {
+	dev.Product = pf
 	return dev
 }
 
