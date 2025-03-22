@@ -8,18 +8,18 @@ import (
 )
 
 type SeriesPoint struct {
-	Time       time.Time         `json:"time,omitempty"`
-	Name       string            `json:"name"`
-	Attributes map[string]string `json:"attributes,omitempty"`
-	Properties Properties        `json:"properties,omitempty"`
+	Time       time.Time  `json:"time,omitempty"`
+	Name       string     `json:"name"`
+	Dimensions Dimensions `json:"dimensions,omitempty"`
+	Metrics    Metrics    `json:"metrics,omitempty"`
 }
 
 func (p *SeriesPoint) UnmarshalJSON(d []byte) error {
 	ps := &struct {
-		Time       string            `json:"time,omitempty"`
-		Name       string            `json:"name"`
-		Attributes map[string]string `json:"attributes,omitempty"`
-		Properties Properties        `json:"properties,omitempty"`
+		Time       string     `json:"time,omitempty"`
+		Name       string     `json:"name"`
+		Dimensions Dimensions `json:"dimensions,omitempty"`
+		Metrics    Metrics    `json:"metrics,omitempty"`
 	}{}
 
 	err := json.Unmarshal(d, ps)
@@ -33,22 +33,22 @@ func (p *SeriesPoint) UnmarshalJSON(d []byte) error {
 		}
 	}
 	p.Name = ps.Name
-	p.Attributes = ps.Attributes
-	p.Properties = ps.Properties
+	p.Dimensions = ps.Dimensions
+	p.Metrics = ps.Metrics
 	return nil
 }
 
 func (p *SeriesPoint) MarshalJSON() ([]byte, error) {
 	ps := struct {
-		Time       string            `json:"time,omitempty"`
-		Name       string            `json:"name"`
-		Attributes map[string]string `json:"attributes,omitempty"`
-		Properties Properties        `json:"properties,omitempty"`
+		Time       string     `json:"time,omitempty"`
+		Name       string     `json:"name"`
+		Dimensions Dimensions `json:"dimensions,omitempty"`
+		Metrics    Metrics    `json:"metrics,omitempty"`
 	}{
 		Time:       p.Time.Format(twins.DateTimeFormat),
 		Name:       p.Name,
-		Attributes: p.Attributes,
-		Properties: p.Properties,
+		Dimensions: p.Dimensions,
+		Metrics:    p.Metrics,
 	}
 
 	return json.Marshal(ps)
