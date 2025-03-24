@@ -15,7 +15,7 @@ type Device struct {
 	Name         string       `json:"name"`
 	SerialNumber string       `json:"serial_number"`
 	Product      *Product     `json:"Product,omitempty"`
-	Strategies   StrategyList `json:"strategys,omitempty"`
+	Strategys    StrategyList `json:"strategys,omitempty"`
 	Status       HealthStatus `json:"status"`
 	Attributes   Attributes   `json:"attributes,omitempty"`
 }
@@ -61,16 +61,16 @@ func (dev *Device) WithAttribute(id string, value string) *Device {
 	return dev
 }
 
-func (dev *Device) WithStrategies(strategyes StrategyList) *Device {
-	dev.Strategies = strategyes
+func (dev *Device) WithStrategys(strategyes StrategyList) *Device {
+	dev.Strategys = strategyes
 	return dev
 }
 
 func (dev *Device) WithStrategy(id string, value *Strategy) *Device {
-	if dev.Strategies == nil {
-		dev.Strategies = make(StrategyList)
+	if dev.Strategys == nil {
+		dev.Strategys = make(StrategyList)
 	}
-	dev.Strategies[id] = value
+	dev.Strategys[id] = value
 	return dev
 }
 
